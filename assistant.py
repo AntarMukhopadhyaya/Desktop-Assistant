@@ -2,20 +2,16 @@
 
 Author: Antar Mukhopadhyaya
 Created On: 23/10/2004
+Github Link: https://github.com/arun199941/Desktop-Assistant/tree/main
+
 
 
 
 '''
 
 
-import pyttsx3
-import datetime
+import pyttsx3,datetime,wikipedia,webbrowser,os,sys,smtplib, socket
 import speech_recognition as sr
-import wikipedia
-import webbrowser
-import  os
-import sys
-import smtplib
 from googlesearch import  search
 
 # Initializing pyttsx3 engine
@@ -28,6 +24,19 @@ def speak(audio):
     # Function Responsible for speaking
     engine.say(audio)
     engine.runAndWait()
+
+def internetConnectionStatus(host="8.8.8.8", port=53, timeout=3):
+    # Checks Whether internet connectivity is avail or not
+    try:
+        socket.setdefaulttimeout(timeout)
+        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host,port))
+        speak("Internet Connectivity Detected")
+    except  socket.error as e:
+    
+        speak("Internet Connection Not detected")
+        speak(" Make Sure you are connected to internet")
+        sys.exit()
+
 
 
 def time():
@@ -101,6 +110,7 @@ def googleSearch(query):
         webbrowser.open(j)
 
 if __name__ == "__main__":
+    internetConnectionStatus()
     greet()
     date()
     while True:
