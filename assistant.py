@@ -1,8 +1,9 @@
 '''
 
 Author: Antar Mukhopadhyaya
-Created On: 23/10/2004
-Github Link: https://github.com/arun199941/Desktop-Assistant/tree/main
+Created On: 21/10/2020
+Github Link: https://github.com/arun199941/Desktop-Assistant/blob/main
+You are free to use this script wherever you want and can add any feature you want....
 
 
 
@@ -32,7 +33,7 @@ def internetConnectionStatus(host="8.8.8.8", port=53, timeout=3):
         socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host,port))
         speak("Internet Connectivity Detected")
     except  socket.error as e:
-    
+
         speak("Internet Connection Not detected")
         speak(" Make Sure you are connected to internet")
         sys.exit()
