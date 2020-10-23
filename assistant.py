@@ -99,8 +99,8 @@ def sendEmail(to,content):
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.ehlo()
     server.starttls()
-    masters_email = 'arunmukhopadhyaya@gmail.com'
-    server.login(masters_email, 'baba123987')
+    masters_email = 'your email'
+    server.login(masters_email, 'password')# make sure u import the password from another text file for better security
     server.sendmail(masters_email,to,content)
     server.close()
 # Beta
@@ -164,7 +164,7 @@ if __name__ == "__main__":
             # Open Vscode
             speak("Opening Vscode...")
             os.startfile("C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe")
-        elif 'email to antar' in query:
+        elif 'send email' in query:
             try:
                 # Error handling
                 speak("What shoud I say")
