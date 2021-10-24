@@ -15,6 +15,8 @@ import pyttsx3,datetime,wikipedia,webbrowser,os,sys,smtplib, socket
 import speech_recognition as sr
 from googlesearch import  search
 
+import gui
+
 # Initializing pyttsx3 engine
 engine = pyttsx3.init()
 
@@ -22,6 +24,7 @@ engine = pyttsx3.init()
 # _________________ Important functions ____________________________
 
 def speak(audio):
+    gui.speak(audio)  # Display output in GUI.
     # Function Responsible for speaking
     engine.say(audio)
     engine.runAndWait()
@@ -114,7 +117,7 @@ if __name__ == "__main__":
     internetConnectionStatus()
     greet()
     date()
-    while True:
+    def run_desktop_assistant():
         query = takeCommand().lower()
 
         if 'wikipedia' in query:
@@ -185,3 +188,5 @@ if __name__ == "__main__":
             # Open Notepad
             speak("Opening Notepad...")
             os.startfile("C:\Windows\System32\\notepad.exe")
+    gui.set_speak_command(run_desktop_assistant)
+    gui.mainloop()
