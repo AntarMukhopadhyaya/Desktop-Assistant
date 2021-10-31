@@ -192,5 +192,8 @@ if __name__ == "__main__":
             # Open Notepad
             speak("Opening Notepad...")
             os.startfile("C:\Windows\System32\\notepad.exe")
+        else:
+            
+            speak("i didn't understand, can you repeat?'")
         
 
