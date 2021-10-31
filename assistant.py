@@ -14,6 +14,7 @@ You are free to use this script wherever you want and can add any feature you wa
 import pyttsx3,datetime,wikipedia,webbrowser,os,sys,smtplib, socket
 import speech_recognition as sr
 from googlesearch import  search
+from pythonping import ping
 
 # Initializing pyttsx3 engine
 engine = pyttsx3.init()
@@ -112,8 +113,8 @@ def googleSearch(query):
 
 if __name__ == "__main__":
     internetConnectionStatus()
-    greet()
-    date()
+    # greet()
+    # date()
     while True:
         query = takeCommand().lower()
 
@@ -176,6 +177,12 @@ if __name__ == "__main__":
             except Exception as e:
                 print(e)
                 speak("Sorry Master I cannot send email at this moment")
+        elif 'ping' in query:
+            try:
+                ping(query.split(" ")[1], verbose=True)
+            except Exception as e:
+                print(e)
+                speak("try again")
         elif 'google'in query:
             query = query.replace('google','')
             speak(f"Searching google for {query}\n ")
@@ -185,3 +192,5 @@ if __name__ == "__main__":
             # Open Notepad
             speak("Opening Notepad...")
             os.startfile("C:\Windows\System32\\notepad.exe")
+        
+
